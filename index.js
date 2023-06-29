@@ -1,6 +1,10 @@
 // Import stylesheets
 import './style.css';
-
+import { buyCake } from './actions.js';
+import state from './state.js';
+import reducer from './reducer.js';
 // Write Javascript code!
-const appDiv = document.getElementById('app');
-appDiv.innerHTML = `<h1>JS Starter</h1>`;
+import 
+
+const shop = reducer({ action: buyCake() });
+console.log(shop.validateState());
