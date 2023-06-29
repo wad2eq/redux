@@ -1,18 +1,28 @@
 // Reducer
 // (previusState, action) => newState
 
-import state from './state';
-import { BUY_CAKE } from './actions';
+import { cakes, ice_scream } from './state';
+import { BUY_CAKE, BUY_ICECREAM } from './actions';
 
-const reducer = ({ currentState = state, action }) => {
+export const reducerCake = (currentState = cakes, action) => {
   switch (action.type) {
     case BUY_CAKE:
-      console.log('reducer');
-      console.log(currentState);
       return { ...currentState, numberofCake: currentState.numberofCake - 1 };
     default:
-      return state;
+      return currentState;
   }
 };
 
-export default reducer;
+export const reducerIceCreame = (currentState = ice_scream, action) => {
+  switch (action.type) {
+    case BUY_ICECREAM:
+      return {
+        ...currentState,
+        numberofIceCream: currentState.numberofIceCream - 1,
+      };
+    default:
+      return currentState;
+  }
+};
+
+export default reducerCake;
