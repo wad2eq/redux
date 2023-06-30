@@ -4,10 +4,10 @@ import './style.css';
 import store from './entities';
 import { buyCake, buyIceCream } from './actions';
 
-// get stat
-//subscriber of the state
-// Przekaz metode
-store.subscribe(() => console.log('updated state', store.getState()));
+//subscribe the functrions
+// store.subscribe(() => console.log('updated state', store.getState()));
+
+//Update the state
 store.dispatch(buyCake());
 store.dispatch(buyIceCream());
-// console.log(buyCake());
+store.dispatch(buyIceCream());
