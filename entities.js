@@ -1,3 +1,7 @@
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+import axios from 'axios';
 import {
   fetchPlayerRequest,
   fetchPlayerSuccess,
@@ -7,18 +11,11 @@ import {
   FETCH_PLAYERS_FAILURE,
 } from './actions.js';
 
-import { reducerCake, reducerIceCreame } from './reducer';
-import logger from 'redux-logger';
-
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-
 const inistialState = {
   loading: false,
   data: [],
   error: '',
 };
-
-console.log('action', fetchPlayerRequest());
 
 const player_reducer = (state = inistialState, action) => {
   switch (action) {
@@ -47,4 +44,7 @@ const player_reducer = (state = inistialState, action) => {
   }
 };
 
-export const storePlayer = createStore(player_reducer, applyMiddleware(logger));
+export const storePlayer = createStore(
+  player_reducer,
+  applyMiddleware(logger, thunk)
+);
