@@ -1,26 +1,48 @@
-// Create state
-// hold state
-// get state getState();
-// update state dispatch()
-// subscribe listener subscribe(listener)
+import {
+  fetchPlayerRequest,
+  fetchPlayerSuccess,
+  fetchPlayerfailure,
+  FETCH_PLAYERS_REQUESTS,
+  FETCH_PLAYERS_SUCCESS,
+  FETCH_PLAYERS_FAILURE,
+} from './actions.js';
 
 import { reducerCake, reducerIceCreame } from './reducer';
 import logger from 'redux-logger';
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
-// Dodanie tej funkcji powoduje błąd reduxa
-function custLog(state) {
-  return (next) => (action) => {
-    console.log('aasdasd');
-    return next(action);
-  };
-}
+const inistialState = {
+  loading: false,
+  data: [],
+  error: '',
+};
 
-//combine reducers;
-const rootReducer = combineReducers({
-  cake: reducerCake,
-  ice: reducerIceCreame,
-});
-const store = createStore(rootReducer, applyMiddleware(logger));
-export default store;
+const player_reducer = (state = inistialState, action) => {
+  switch (action) {
+    case FETCH_PLAYERS_REQUESTS:
+      return {
+        ...state,
+        loading: true,
+      };
+      break;
+    case FETCH_PLAYERS_SUCCESS:
+      return {
+        loading: false,
+        users: action.payload,
+        error: '',
+      };
+      break;
+    case FETCH_PLAYERS_FAILURE:
+      return {
+        loading: false,
+        users: [],
+        error: action.payload,
+      };
+      break;
+    default:
+      return state;
+  }
+};
+
+export const storePlayer = createStore(player_reducer, applyMiddleware(logger));

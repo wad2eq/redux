@@ -1,16 +1,22 @@
-export const BUY_CAKE = 'BUY_CAKE';
-export const BUY_ICECREAM = 'BUY_ICECREAM';
+export const FETCH_PLAYERS_REQUESTS = 'FETCH_PLAYERS_REQUESTS';
+export const FETCH_PLAYERS_SUCCESS = 'FETCH_PLAYERS_SUCCESS';
+export const FETCH_PLAYERS_FAILURE = 'FETCH_PLAYERS_FAILURE';
 
-const BUY_CAKE_ACTION = {
-  type: BUY_CAKE,
-  info: 'First redux action',
+export const fetchPlayerRequest = () => {
+  type: FETCH_PLAYERS_REQUESTS;
 };
 
-const BUY_ICECREAM_ACTION = {
-  type: BUY_ICECREAM,
-  info: 'First redux action',
-};
+export const fetchPlayerSuccess = () => ({
+  type: FETCH_PLAYERS_FAILURE,
+  payload: users,
+});
+export const fetchPlayerfailure = () => ({
+  type: FETCH_PLAYERS_FAILURE,
+  payload: 'No players were find',
+});
 
-//Action creator
-export const buyCake = () => BUY_CAKE_ACTION;
-export const buyIceCream = () => BUY_ICECREAM_ACTION;
+export default {
+  FETCH_PLAYERS_REQUESTS,
+  FETCH_PLAYERS_SUCCESS,
+  FETCH_PLAYERS_FAILURE,
+};
