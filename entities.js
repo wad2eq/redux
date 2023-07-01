@@ -18,6 +18,8 @@ const inistialState = {
   error: '',
 };
 
+console.log('action', fetchPlayerRequest());
+
 const player_reducer = (state = inistialState, action) => {
   switch (action) {
     case FETCH_PLAYERS_REQUESTS:

@@ -2,9 +2,9 @@ export const FETCH_PLAYERS_REQUESTS = 'FETCH_PLAYERS_REQUESTS';
 export const FETCH_PLAYERS_SUCCESS = 'FETCH_PLAYERS_SUCCESS';
 export const FETCH_PLAYERS_FAILURE = 'FETCH_PLAYERS_FAILURE';
 
-export const fetchPlayerRequest = () => {
-  type: FETCH_PLAYERS_REQUESTS;
-};
+export const fetchPlayerRequest = () => ({
+  type: FETCH_PLAYERS_REQUESTS,
+});
 
 export const fetchPlayerSuccess = () => ({
   type: FETCH_PLAYERS_FAILURE,
@@ -16,6 +16,9 @@ export const fetchPlayerfailure = () => ({
 });
 
 export default {
+  fetchPlayerRequest,
+  fetchPlayerSuccess,
+  fetchPlayerfailure,
   FETCH_PLAYERS_REQUESTS,
   FETCH_PLAYERS_SUCCESS,
   FETCH_PLAYERS_FAILURE,
